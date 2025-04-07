@@ -39,7 +39,7 @@ void bsort(void* p, size_t n, size_t el_sz,
             void* el1 = _idx(p, el_sz, j);
             void* el2 = _idx(p, el_sz, j - 1);
 
-            if ( cmp(el1, el2) > 0 )
+            if ( cmp(el1, el2) < 0 )
             {
                 _swapmem(el1, el2, el_sz);
                 already_sorted = false;
