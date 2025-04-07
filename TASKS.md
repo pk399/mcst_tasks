@@ -9,7 +9,7 @@
   Нужно парсить их в любых комбинациях, например:  
   `prg -tm -s --elbrus=16c file0 --elbrus=2c3 file1`  
   (Пример вывода): `Options are correct: t, m, c, elbrus=16c, elbrus=2c3, non-options:  
-file0, file1.`
+file0, file1.`  
   `prg -tm -x --elbrus=16c file0`  
   (Пример вывода): `Options are incorrect.`  
   _Доп. задание_ - вывод некорректной опции на экран.
