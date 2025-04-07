@@ -1,10 +1,11 @@
 // Implementation of bubble sort
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #include "bsort.h"
 
-void _swapmem(void* pp1, void* pp2, size_t sz)
+static void _swapmem(void* pp1, void* pp2, size_t sz)
 {
     char* p1 = pp1;
     char* p2 = pp2;
@@ -18,7 +19,7 @@ void _swapmem(void* pp1, void* pp2, size_t sz)
 }
 
 // Constructs a new void* based on index and element size
-void* _idx(void* p, size_t el_sz, int idx)
+static inline void* _idx(void* p, size_t el_sz, int idx)
 {
     return (void*) ( (char*) p + el_sz*idx );
 }
@@ -31,6 +32,8 @@ void bsort(void* p, size_t n, size_t el_sz,
 
     for (int i = 0; i < (n - 1); i++)
     {
+        bool already_sorted = true;
+
         for (int j = 1; j < (n - i); j++)
         {
             void* el1 = _idx(p, el_sz, j);
@@ -39,7 +42,10 @@ void bsort(void* p, size_t n, size_t el_sz,
             if ( cmp(el1, el2) > 0 )
             {
                 _swapmem(el1, el2, el_sz);
+                already_sorted = false;
             }
         }
+
+        if (already_sorted) break;
     }
 }
